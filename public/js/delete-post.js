@@ -2,25 +2,19 @@ const deleteFormHandler = async (event) => {
     event.preventDefault();
 
     // Get post_id from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const post_id = urlParams.get('post_id');
+    const post_id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
 
-    try {
-        const response = await fetch(`/api/posts/${post_id}`, {
-            method: 'DELETE'
-        });
+    const response = await fetch(`/api/posts/${post_id}`, {
+        method: 'DELETE'
+    });
 
-        if (response.ok) {
-            document.location.replace('/dashboard');
-        } else {
-            throw new Error('Failed to delete project');
-        }
-    } catch (error) {
-        console.error('Error deleting post:', error);
-        alert('Failed to delete project');
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
     }
-};
+}
 
-document
-    .querySelector('.delete-btn')
-    .addEventListener('click', loginFormHandler);
+document.querySelector('.delete-post-btn').addEventListener('click', deleteFormHandler);
