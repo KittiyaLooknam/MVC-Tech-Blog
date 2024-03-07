@@ -1,6 +1,7 @@
+// Import necessary modules
 const User = require('./User');
 const Post = require('./Post');
-const Comment = require('./Comment');
+const Comment = require('./Comments');
 
 
 User.hasMany(Post, {

@@ -1,11 +1,9 @@
-const {
-    Model,
-    DataTypes
-} = require('sequelize');
+// Import necessary modules
+const {Model,DataTypes} = require('sequelize');
 const sequelize = require('../config/connection');
 
 
-class Comment extends Model {}
+class Comment extends Model {} // creates a new instance of the class 
 
 Comment.init({
     id: {
@@ -45,4 +43,4 @@ Comment.init({
 })
 
 
-module.exports = Comment;
+module.exports = Comment; 
